@@ -1,0 +1,55 @@
+# ===========================
+# FastFixNCR Security & Routing
+# ===========================
+
+# Enable Rewrite Engine
+<IfModule mod_rewrite.c>
+RewriteEngine On
+
+# Force HTTPS
+RewriteCond %{HTTPS} !=on
+RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+# Force www (optional — uncomment if you want all traffic to go to www)
+# RewriteCond %{HTTP_HOST} !^www\. [NC]
+# RewriteRule ^ https://www.%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+# Remove .html extension from URLs
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}\.html -f
+RewriteRule ^([^/]+)/?$ $1.html [L]
+
+# Default index file
+DirectoryIndex home.html index.html
+</IfModule>
+
+# ===========================
+# Security Headers
+# ===========================
+<IfModule mod_headers.c>
+Header set X-Frame-Options "SAMEORIGIN"
+Header set X-XSS-Protection "1; mode=block"
+Header set X-Content-Type-Options "nosniff"
+Header always set Referrer-Policy "strict-origin-when-cross-origin"
+Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains; preload"
+</IfModule>
+
+# ===========================
+# Cache Optimization (optional)
+# ===========================
+<IfModule mod_expires.c>
+ExpiresActive On
+ExpiresByType image/jpg "access plus 1 year"
+ExpiresByType image/jpeg "access plus 1 year"
+ExpiresByType image/gif "access plus 1 year"
+ExpiresByType image/png "access plus 1 year"
+ExpiresByType text/css "access plus 1 month"
+ExpiresByType text/javascript "access plus 1 month"
+ExpiresByType application/javascript "access plus 1 month"
+ExpiresByType text/html "access plus 1 day"
+</IfModule>
+
+# ===========================
+# Disable Directory Browsing
+# ===========================
+Options -Indexes
