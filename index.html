@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Coming Soon — Algorithm Cracking HUD</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@600&display=swap');
+
+        :root {
+            --neon: #00ffd8;
+            --neon-dim: rgba(0, 255, 216, 0.18);
+            --bg-dark: #02030a;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0
+        }
+
+        html,
+        body {
+            height: 100%;
+            width: 100%;
+            background: radial-gradient(circle at 20% 10%, #041025 0%, #00040a 35%, #000006 100%);
+            font-family: Orbitron, monospace;
+            color: var(--neon);
+            overflow: hidden
+        }
+
+        /* HUD text & subtle scanlines */
+        .hud {
+            position: relative;
+            z-index: 4;
+            height: 100vh;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            pointer-events: none;
+        }
+
+        h1 {
+            font-size: 3.6rem;
+            letter-spacing: 2px;
+            color: var(--neon);
+            text-shadow: 0 0 18px rgba(0, 255, 216, 0.25)
+        }
+
+        p {
+            margin-top: 8px;
+            color: rgba(160, 255, 240, 0.9);
+            font-size: 1.15rem
+        }
+
+        .status {
+            position: absolute;
+            left: 48px;
+            top: 48px;
+            z-index: 5;
+            color: var(--neon);
+            font-size: 13px;
+            text-align: left;
+            background: linear-gradient(180deg, rgba(0, 0, 0, 0.12), rgba(0, 0, 0, 0.06));
+            border: 1px solid rgba(0, 255, 216, 0.08);
+            padding: 12px;
+            min-width: 220px;
+            backdrop-filter: blur(4px);
+        }
+
+        .status .title {
+            font-weight: 700;
+            margin-bottom: 6px;
+            font-size: 12px;
+            opacity: 0.95
+        }
+
+        .status .line {
+            font-size: 12px;
+            opacity: 0.9
+        }
+
+        /* Canvas layers stacked */
+        canvas {
+            position: absolute;
+            inset: 0;
+            display: block;
+            z-index: 1;
+        }
+
+        #fxCanvas {
+            z-index: 1;
+        }
+
+        #globeCanvas {
+            z-index: 2;
+            pointer-events: none;
+        }
+
+        #hudCanvas {
+            z-index: 3;
+            pointer-events: none;
+        }
+
+        /* small responsive tweaks */
+        @media (max-width:600px) {
+            h1 {
+                font-size: 2.2rem
+            }
+
+            .status {
+                left: 14px;
+                top: 14px;
+                padding: 8px;
+                font-size: 11px
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- canvases: fx = background cracking, globe = globe + sensor arcs, hud = radar, hud overlays -->
+    <canvas id="fxCanvas"></canvas>
+    <canvas id="globeCanvas"></canvas>
+    <canvas id="hudCanvas"></canvas>
+
+    <div class="hud">
+        <h1>COMING SOON</h1>
+        <p>FASTFIXNCR in progress — stand by</p>
+    </div>
+
+    <div class="status" id="statusBox">
+        <div class="title">DECRYPTING...</div>
+        <div class="line" id="progressText">Progress: 0%</div>
+        <div style="height:6px;margin-top:8px;background:rgba(255,255,255,0.03);border-radius:4px;overflow:hidden">
+            <div id="progressBar" style="width:0%;height:6px;background:linear-gradient(90deg,var(--neon), #66fff0);">
+            </div>
+        </div>
+        <div class="line" style="margin-top:8px; font-size:11px; opacity:0.8" id="substatus">Initializing kernel
+            exploit...</div>
+    </div>
+
+    <script>
+        /* ==========================
+           Setup canvases & sizing
+           ========================== */
+        const fx = document.getElementById('fxCanvas');
+        const g = document.getElementById('globeCanvas');
+        const h = document.getElementById('hudCanvas');
+        const fxCtx = fx.getContext('2d');
+        const gCtx = g.getContext('2d');
+        const hCtx = h.getContext('2d');
+
+        function resizeAll() {
+            const w = innerWidth, H = innerHeight;
+            [fx, g, h].forEach(c => { c.width = w; c.height = H });
+        }
+        resizeAll();
+        addEventListener('resize', resizeAll);
+
+        /* ==========================
+           BACKGROUND: Algorithm cracking FX
+           - binary columns (fast/slow)
+           - hexagon grid overlay (rotating offset)
+           - flickering code fragments
+           - noise/glow vignette
+           ========================== */
+
+        const W = () => fx.width;
+        const H = () => fx.height;
+
+        // create columns of falling binary
+        let columns = [];
+        function initColumns() {
+            columns = [];
+            const colWidth = 18;
+            const cols = Math.ceil(W() / colWidth) + 6;
+            for (let i = 0; i < cols; i++) {
+                columns.push({
+                    x: i * colWidth - 20,
+                    y: Math.random() * -H() / 2,
+                    speed: 1 + Math.random() * 3.2,
+                    length: 6 + Math.floor(Math.random() * 36),
+                    size: 12 + Math.random() * 6,
+                    hueOff: Math.random() * 30
+                });
+            }
+        }
+        initColumns();
+
+        // hex grid precompute
+        function drawHexGrid(ctx, time) {
+            const hexR = 28;
+            const dx = hexR * Math.sqrt(3);
+            const dy = hexR * 1.5;
+            const offsetX = Math.sin(time / 1600) * 20;
+            const offsetY = Math.cos(time / 2200) * 12;
+            ctx.save();
+            ctx.globalAlpha = 0.06;
+            ctx.strokeStyle = 'rgba(0,255,216,0.9)';
+            ctx.lineWidth = 1;
+            for (let y = -dy; y < H() + dy; y += dy) {
+                for (let x = -dx; x < W() + dx; x += dx) {
+                    const sx = x + ((Math.floor(y / dy) % 2) ? dx / 2 : 0) + offsetX;
+                    const sy = y + offsetY;
+                    // draw hexagon
+                    const r = hexR;
+                    const a0 = 0;
+                    ctx.beginPath();
+                    for (let k = 0; k < 6; k++) {
+                        const a = a0 + k * Math.PI / 3;
+                        const px = sx + Math.cos(a) * r;
+                        const py = sy + Math.sin(a) * r;
+                        if (k === 0) ctx.moveTo(px, py); else ctx.lineTo(px, py);
+                    }
+                    ctx.closePath();
+                    ctx.stroke();
+                }
+            }
+            ctx.restore();
+        }
+
+        // flickering ascii patches
+        const fragments = [];
+        function initFragments() {
+            fragments.length = 0;
+            const count = 18;
+            for (let i = 0; i < count; i++) {
+                fragments.push({
+                    x: Math.random() * W(),
+                    y: Math.random() * H(),
+                    w: 90 + Math.random() * 220,
+                    h: 24 + Math.random() * 64,
+                    life: Math.random() * 1.0,
+                    speed: 0.2 + Math.random() * 0.6,
+                    text: randomCode(30)
+                });
+            }
+        }
+        function randomCode(len) {
+            const chars = '01ABCDEF[]{}()<>=+-/*%:;.,';
+            let s = '';
+            for (let i = 0; i < len; i++) s += chars.charAt(Math.floor(Math.random() * chars.length));
+            return s;
+        }
+        initFragments();
+
+        // noise texture (simple)
+        function noiseOverlay(ctx) {
+            // subtle noise by translucent rectangles
+            ctx.save();
+            ctx.globalAlpha = 0.02;
+            ctx.fillStyle = '#000';
+            for (let i = 0; i < 500; i++) {
+                const x = Math.random() * W();
+                const y = Math.random() * H();
+                const w = Math.random() * 3;
+                const h = Math.random() * 3;
+                ctx.fillRect(x, y, w, h);
+            }
+            ctx.restore();
+        }
+
+        // main fx draw
+        function drawFX(t) {
+            fxCtx.clearRect(0, 0, W(), H());
+            // base gradient
+            const grad = fxCtx.createLinearGradient(0, 0, W(), H());
+            grad.addColorStop(0, 'rgba(0,8,16,0.85)');
+            grad.addColorStop(0.6, 'rgba(0,12,24,0.55)');
+            grad.addColorStop(1, 'rgba(0,2,6,0.95)');
+            fxCtx.fillStyle = grad;
+            fxCtx.fillRect(0, 0, W(), H());
+
+            // binary columns
+            fxCtx.save();
+            fxCtx.globalCompositeOperation = 'lighter';
+            columns.forEach((c, idx) => {
+                fxCtx.font = (c.size) + 'px monospace';
+                fxCtx.textAlign = 'center';
+                for (let k = 0; k < c.length; k++) {
+                    const yy = (c.y + k * (c.size + 2)) % (H() + 200) - 100;
+                    const ch = Math.random() > 0.6 ? '1' : '0';
+                    const alpha = 0.08 + (k / c.length) * 0.5;
+                    fxCtx.fillStyle = `rgba(0,255,220,${alpha})`;
+                    fxCtx.fillText(ch, c.x + (Math.sin((c.y + k) * 0.02 + idx) * 6), yy);
+                }
+                c.y += c.speed + Math.sin(t / 600 + idx) * 0.6;
+                if (c.y > H() + 120) {
+                    c.y = -Math.random() * H() / 2;
+                    c.speed = 1 + Math.random() * 3.2;
+                    c.length = 6 + Math.floor(Math.random() * 36);
+                }
+            });
+            fxCtx.restore();
+
+            // hex grid
+            drawHexGrid(fxCtx, t);
+
+            // code fragments
+            fxCtx.save();
+            fragments.forEach(f => {
+                f.y += f.speed * (0.2 + Math.sin(t / 1000) * 0.6);
+                if (f.y > H() + 50) { f.y = -Math.random() * 200; f.x = Math.random() * W(); f.text = randomCode(Math.floor(16 + Math.random() * 48)); }
+                fxCtx.globalAlpha = 0.06 + 0.4 * Math.abs(Math.sin(t / 400 + f.life * 5));
+                fxCtx.fillStyle = 'rgba(0,255,200,0.25)';
+                fxCtx.fillRect(f.x, f.y, f.w, f.h);
+                fxCtx.globalAlpha = 0.9 * Math.abs(Math.sin(t / 220 + f.life));
+                fxCtx.font = '12px monospace';
+                fxCtx.fillStyle = 'rgba(6,255,220,0.95)';
+                fxCtx.fillText(f.text, f.x + 8, f.y + f.h / 1.6);
+            });
+            fxCtx.restore();
+
+            // vignette glow & noise
+            fxCtx.save();
+            const g = fxCtx.createRadialGradient(W() / 2, H() / 2, 100, W() / 2, H() / 2, Math.max(W(), H()) * 0.9);
+            g.addColorStop(0, 'rgba(0,40,60,0.06)');
+            g.addColorStop(1, 'rgba(0,0,0,0.9)');
+            fxCtx.fillStyle = g;
+            fxCtx.fillRect(0, 0, W(), H());
+            noiseOverlay(fxCtx);
+            fxCtx.restore();
+        }
+
+        /* ==========================
+           GLOBE LAYER (wireframe + trails + sensor arcs)
+           (similar to previous versions but in separate canvas)
+           ========================== */
+        const globe = {
+            radius: 140,
+            particles: [],
+            particleCount: 160,
+            rotation: 0
+        };
+
+        function initGlobe() {
+            globe.particles.length = 0;
+            for (let i = 0; i < globe.particleCount; i++) {
+                const theta = Math.random() * Math.PI * 2;
+                const phi = Math.random() * Math.PI;
+                globe.particles.push({
+                    x: globe.radius * Math.sin(phi) * Math.cos(theta),
+                    y: globe.radius * Math.sin(phi) * Math.sin(theta),
+                    z: globe.radius * Math.cos(phi),
+                    trail: Math.random() * 40
+                });
+            }
+        }
+        initGlobe();
+
+        function drawGlobeLayer(t) {
+            gCtx.clearRect(0, 0, g.width, g.height);
+            const cx = g.width / 2;
+            const cy = g.height / 2;
+            gCtx.save();
+            gCtx.translate(cx, cy);
+            const scale = 1 + 0.04 * Math.sin(t / 1100);
+            gCtx.scale(scale, scale);
+
+            // particles + lines
+            globe.particles.forEach((p, i) => {
+                const cosA = Math.cos(globe.rotation);
+                const sinA = Math.sin(globe.rotation);
+                const x = p.x * cosA - p.z * sinA;
+                const z = p.x * sinA + p.z * cosA;
+                const y = p.y;
+                const persp = 320 / (320 + z);
+                const sx = x * persp;
+                const sy = y * persp;
+
+                // point
+                gCtx.beginPath();
+                gCtx.fillStyle = `rgba(0,255,216,${0.65 * persp})`;
+                gCtx.arc(sx, sy, 2.0 * persp, 0, Math.PI * 2);
+                gCtx.fill();
+
+                // trails
+                const prx = p.x * Math.cos(globe.rotation - p.trail) - p.z * Math.sin(globe.rotation - p.trail);
+                const prz = p.x * Math.sin(globe.rotation - p.trail) + p.z * Math.cos(globe.rotation - p.trail);
+                const ppersp = 320 / (320 + prz);
+                const psx = prx * ppersp;
+                const psy = y * ppersp;
+                gCtx.beginPath();
+                gCtx.moveTo(psx, psy);
+                gCtx.lineTo(sx, sy);
+                gCtx.strokeStyle = 'rgba(0,255,216,0.12)';
+                gCtx.lineWidth = 1;
+                gCtx.stroke();
+
+                // connecting thin network for nearby projected points (cheap N^2 limit)
+                if (i % 6 === 0) {
+                    for (let j = i + 1; j < globe.particles.length && j < i + 7; j++) {
+                        const p2 = globe.particles[j];
+                        const x2 = p2.x * cosA - p2.z * sinA;
+                        const z2 = p2.x * sinA + p2.z * cosA;
+                        const y2 = p2.y;
+                        const persp2 = 320 / (320 + z2);
+                        const sx2 = x2 * persp2;
+                        const sy2 = y2 * persp2;
+                        const dist = Math.hypot(sx2 - sx, sy2 - sy);
+                        if (dist < 60) {
+                            gCtx.beginPath();
+                            gCtx.moveTo(sx, sy);
+                            gCtx.lineTo(sx2, sy2);
+                            gCtx.strokeStyle = 'rgba(0,255,216,0.08)';
+                            gCtx.stroke();
+                        }
+                    }
+                }
+            });
+
+            // sensor arcs
+            gCtx.strokeStyle = 'rgba(0,255,216,0.18)';
+            gCtx.lineWidth = 2;
+            for (let i = 0; i < 4; i++) {
+                const ang = (t / 900 + i * 0.6);
+                gCtx.beginPath();
+                gCtx.arc(0, 0, globe.radius * 0.5 + i * 20, ang, ang + Math.PI * 0.8);
+                gCtx.stroke();
+            }
+
+            gCtx.restore();
+            globe.rotation += 0.002;
+        }
+
+        /* ==========================
+           HUD LAYER: radar + small overlays
+           ========================== */
+        function drawHUDLayer(t) {
+            hCtx.clearRect(0, 0, h.width, h.height);
+
+            // radar top-right
+            const rx = h.width - 200;
+            const ry = 200;
+            const rr = 96;
+
+            // outer circle faint
+            hCtx.beginPath();
+            hCtx.strokeStyle = 'rgba(0,255,216,0.12)';
+            hCtx.lineWidth = 1.2;
+            hCtx.arc(rx, ry, rr, 0, Math.PI * 2);
+            hCtx.stroke();
+
+            // sweep gradient arc
+            const sweep = t / 30 % 360 * Math.PI / 180;
+            hCtx.save();
+            const g = hCtx.createRadialGradient(rx, ry, 1, rx, ry, rr);
+            g.addColorStop(0, 'rgba(0,255,216,0.28)');
+            g.addColorStop(1, 'rgba(0,255,216,0)');
+            hCtx.fillStyle = g;
+            hCtx.beginPath();
+            hCtx.moveTo(rx, ry);
+            hCtx.arc(rx, ry, rr, sweep, sweep + Math.PI / 5);
+            hCtx.fill();
+            hCtx.restore();
+
+            // pulsing ring
+            hCtx.beginPath();
+            const pulseR = rr * (0.8 + 0.15 * Math.abs(Math.sin(t / 400)));
+            hCtx.strokeStyle = 'rgba(0,255,216,0.06)';
+            hCtx.lineWidth = 2;
+            hCtx.arc(rx, ry, pulseR, 0, Math.PI * 2);
+            hCtx.stroke();
+
+            // subtle HUD scanlines across status box area
+            hCtx.beginPath();
+            hCtx.strokeStyle = 'rgba(0,255,216,0.035)';
+            for (let y = 48; y < 170; y += 6) {
+                hCtx.moveTo(44, y + (t / 10) % 6);
+                hCtx.lineTo(300, y + (t / 10) % 6);
+            }
+            hCtx.stroke();
+
+            // center crosshair faint
+            const cx = h.width / 2, cy = h.height / 2;
+            hCtx.beginPath();
+            hCtx.strokeStyle = 'rgba(0,255,216,0.08)';
+            hCtx.moveTo(cx - 18, cy); hCtx.lineTo(cx + 18, cy);
+            hCtx.moveTo(cx, cy - 18); hCtx.lineTo(cx, cy + 18);
+            hCtx.stroke();
+        }
+
+        /* ==========================
+           Decrypt progress simulation
+           ========================== */
+        const progressText = document.getElementById('progressText');
+        const progressBar = document.getElementById('progressBar');
+        const substatus = document.getElementById('substatus');
+        let progress = 0;
+        let lastProgressUpdate = performance.now();
+        const stages = [
+            'Initializing kernel exploit...',
+            'Bypassing AES handshake...',
+            'Reconstructing key schedule...',
+            'Brute-forcing entropy clusters...',
+            'Reassembling shards...',
+            'Finalizing payload...'
+        ];
+        function updateProgress(t) {
+            // subtle variable speed with small jitter
+            if (t - lastProgressUpdate > 120) {
+                progress += 0.2 + Math.random() * 0.9;
+                if (progress > 99.6) progress = 99.6; // keep at 99.6 until "finish" triggered externally
+                lastProgressUpdate = t;
+                const pct = Math.floor(progress);
+                progressText.textContent = `Progress: ${pct}%`;
+                progressBar.style.width = `${Math.min(100, pct)}%`;
+                substatus.textContent = stages[Math.floor((pct / 100) * stages.length)];
+            }
+        }
+
+        /* ==========================
+           Main animation loop
+           ========================== */
+        let started = false;
+        function loop(time) {
+            // draw background cracking FX
+            drawFX(time);
+
+            // draw globe
+            drawGlobeLayer(time);
+
+            // draw hud overlays
+            drawHUDLayer(time);
+
+            // update progress simulation
+            updateProgress(time);
+
+            requestAnimationFrame(loop);
+        }
+
+        requestAnimationFrame(loop);
+
+        /* Optional: auto-complete progress after a delay to simulate success */
+        setTimeout(() => {
+            // speed up to completion
+            const finishInterval = setInterval(() => {
+                progress += 1.2 + Math.random() * 3.6;
+                if (progress >= 100) {
+                    progress = 100;
+                    progressText.textContent = `Progress: 100%`;
+                    progressBar.style.width = `100%`;
+                    substatus.textContent = 'Decryption complete. Secure channel open.';
+                    clearInterval(finishInterval);
+                } else {
+                    progressText.textContent = `Progress: ${Math.floor(progress)}%`;
+                    progressBar.style.width = `${Math.floor(progress)}%`;
+                    substatus.textContent = stages[Math.floor((progress / 100) * stages.length)];
+                }
+            }, 120);
+        }, 8500);
+
+        /* re-initialize parts on resize */
+        addEventListener('resize', () => {
+            initColumns();
+            initFragments();
+            initGlobe();
+        });
+
+    </script>
+
+</body>
+
+</html>
