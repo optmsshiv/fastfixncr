@@ -180,6 +180,7 @@ header {
 .contact {
     display: grid;
     grid-template-columns: 1fr 420px;
+    align-items: start;
     gap: 1rem;
     margin-top: 1rem;
     padding: 1rem;
@@ -209,6 +210,39 @@ button[type=submit] {
     border-radius: 8px;
     border: 0;
     font-weight: 700
+}
+
+@media (max-width: 900px) {
+    .contact {
+        grid-template-columns: 1fr;
+        justify-items: center;
+        align-items: center;
+        /* Center vertically inside the section */
+        text-align: center;
+        gap: 2rem;
+        /* Add space between form and map */
+        padding: 2rem 1rem;
+    }
+
+    .contact form,
+    .contact>div {
+        width: 100%;
+        max-width: 500px;
+    }
+
+    .contact iframe {
+        width: 100%;
+        height: 260px;
+        border-radius: 10px;
+    }
+
+    #contact {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        /* Centers whole contact section content vertically */
+    }
 }
 
 /* === Testimonials Section (Light Theme) === */
