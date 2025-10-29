@@ -491,7 +491,7 @@ footer {
     }
 
     .brand-badge img {
-        height: 90px
+        height: 200px
     }
 }
 
@@ -509,84 +509,7 @@ footer {
     }
 }
 
-/* floating buttons */
-.whatsapp-float {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    background-color: #25d365e9;
-    color: white;
-    border-radius: 50%;
-    width: 55px;
-    height: 55px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-    z-index: 1000;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
 
-.whatsapp-float:hover {
-    transform: scale(1.1);
-    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
-}
-
-@media (max-width: 480px) {
-    .whatsapp-float {
-        width: 50px;
-        height: 50px;
-        bottom: 15px;
-        right: 15px;
-    }
-}
-
-.callnow {
-    position: fixed;
-    left: 50%;
-    transform: translateX(-50%);
-    bottom: 12px;
-    background: var(--blue);
-    color: #fff;
-    padding: .85rem 1.2rem;
-    border-radius: 30px;
-    font-weight: 700;
-    box-shadow: 0 8px 24px rgba(11, 121, 208, 0.18);
-    display: flex;
-    gap: .5rem
-}
-
-.call-float {
-    position: fixed;
-    bottom: 90px;
-    /* keeps it above the WhatsApp button */
-    right: 20px;
-    background-color: #0078ff;
-    color: white;
-    border-radius: 50%;
-    width: 55px;
-    height: 55px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-    z-index: 1000;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.call-float:hover {
-    transform: scale(1.1);
-    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
-}
-
-@media (max-width: 480px) {
-    .call-float {
-        width: 50px;
-        height: 50px;
-        bottom: 80px;
-        right: 15px;
-    }
-}
 
 html,
 body {
@@ -607,5 +530,92 @@ body {
 
     .review-form {
         padding: 30px 15px;
+    }
+}
+
+/* whats app and call button new style */
+/* Shared floating button style */
+.float-btn {
+    position: fixed;
+    width: 55px;
+    height: 55px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-size: 22px;
+    z-index: 1000;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2);
+    text-decoration: none;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+/* Specific buttons */
+.call-float {
+    bottom: 90px;
+    right: 20px;
+    background-color: var(--blue);
+    animation: pulseBlue 2.2s infinite;
+}
+
+.whatsapp-float {
+    bottom: 20px;
+    right: 20px;
+    background-color: #25D366;
+    animation: pulseGreen 2.2s infinite;
+}
+
+/* Hover effect */
+.float-btn:hover {
+    transform: scale(1.1);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+}
+
+/* Pulse animations */
+@keyframes pulseBlue {
+    0% {
+        box-shadow: 0 0 0 0 rgba(11, 121, 208, 0.5);
+    }
+
+    70% {
+        box-shadow: 0 0 0 18px rgba(11, 121, 208, 0);
+    }
+
+    100% {
+        box-shadow: 0 0 0 0 rgba(11, 121, 208, 0);
+    }
+}
+
+@keyframes pulseGreen {
+    0% {
+        box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.5);
+    }
+
+    70% {
+        box-shadow: 0 0 0 18px rgba(37, 211, 102, 0);
+    }
+
+    100% {
+        box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
+    }
+}
+
+/* Mobile adjustments */
+@media (max-width: 520px) {
+    .float-btn {
+        width: 50px;
+        height: 50px;
+        font-size: 20px;
+    }
+
+    .call-float {
+        bottom: 80px;
+        right: 15px;
+    }
+
+    .whatsapp-float {
+        bottom: 15px;
+        right: 15px;
     }
 }
