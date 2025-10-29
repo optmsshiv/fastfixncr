@@ -212,22 +212,38 @@ button[type=submit] {
     font-weight: 700
 }
 
+/* Mobile View Fix (≤900px) */
 @media (max-width: 900px) {
-    .contact {
-        grid-template-columns: 1fr;
-        justify-items: center;
+    #contact {
+        display: flex;
+        flex-direction: column;
         align-items: center;
-        /* Center vertically inside the section */
-        text-align: center;
+        justify-content: center;
+        /* vertically center section content */
+        min-height: 100vh;
+        /* takes full screen height */
+        
+    }
+
+    .contact {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
         gap: 2rem;
-        /* Add space between form and map */
-        padding: 2rem 1rem;
+        width: 100%;
+        max-width: 900px;
+        background: linear-gradient(180deg, #f7fbff, transparent);
+        border-radius: 12px;
+        box-sizing: border-box;
     }
 
     .contact form,
     .contact>div {
         width: 100%;
-        max-width: 500px;
+    }
+
+    .form-row {
+        grid-template-columns: 1fr;
     }
 
     .contact iframe {
@@ -236,12 +252,8 @@ button[type=submit] {
         border-radius: 10px;
     }
 
-    #contact {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        /* Centers whole contact section content vertically */
+    button[type=submit] {
+        width: 100%;
     }
 }
 
