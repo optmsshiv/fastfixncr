@@ -11,7 +11,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="assets/css/style.css" />
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
-    
+
 </head>
 
 <body>
@@ -23,7 +23,7 @@
 
     <header class="container">
         <div class="logo">
-            <img src="assets/images/logo.jpg" alt="FastFix logo" />
+            <img src="assets/images/logo.png" alt="FastFix logo" />
             <div>
                 <div style="font-weight:700">FastFix</div>
                 <div style="font-size:.85rem;color:var(--muted)">AC & Kitchen Service — Lal Kuan, New Delhi</div>
@@ -39,7 +39,8 @@
     <section class="hero">
         <div class="container hero-left">
             <h1>Fast, reliable repair for AC, Chimney, Dishwasher & Microwave</h1>
-            <p class="tag">Experienced technicians · Genuine parts · Walk-in & doorstep repairs · Sale & purchase assistance
+            <p class="tag">Experienced technicians · Genuine parts · Walk-in & doorstep repairs · Sale & purchase
+                assistance
             </p>
             <div class="hero-ctas">
                 <a class="phone-cta" href="tel:+919310346037">Call 9310346037</a>
@@ -50,7 +51,7 @@
                 <div
                     style="min-width:220px;background:#fff;padding:.8rem;border-radius:10px;box-shadow:0 6px 18px rgba(11,37,64,0.04)">
                     <strong>Service Area</strong>
-                    <div style="color:var(--muted);font-size:.95rem">Lal Kuan MB Road, New Delhi 110044</div>
+                    <div style="color:var(--muted);font-size:.95rem">Delhi NCR, NOIDA</div>
                 </div>
                 <div
                     style="min-width:220px;background:#fff;padding:.8rem;border-radius:10px;box-shadow:0 6px 18px rgba(11,37,64,0.04)">
@@ -82,7 +83,8 @@
             <h2 style="margin-top:1rem">Our Services</h2>
             <div class="services">
                 <article class="card">
-                    <img src="assets/images/ac.png" alt="A technician performing maintenance on an air conditioner in a well-lit residential setting, ensuring optimal performance and comfort." />
+                    <img src="assets/images/ac.png"
+                        alt="A technician performing maintenance on an air conditioner in a well-lit residential setting, ensuring optimal performance and comfort." />
                     <h4>Air Conditioner Repair</h4>
                     <p style="color:var(--muted);font-size:.95rem">Installation, gas top-up, compressor & PCB repairs —
                         all brands supported.</p>
@@ -90,7 +92,8 @@
                 </article>
 
                 <article class="card">
-                    <img src="assets/images/chimney.png" alt="A technician performing maintenance on a chimney in a residential setting, ensuring proper functionality and safety." />
+                    <img src="assets/images/chimney.png"
+                        alt="A technician performing maintenance on a chimney in a residential setting, ensuring proper functionality and safety." />
                     <h4>Chimney Repair & Cleaning</h4>
                     <p style="color:var(--muted);font-size:.95rem">Deep cleaning, motor repair, filter replacement &
                         installation.</p>
@@ -158,7 +161,7 @@
                             <option value="Microwave">Microwave</option>
                         </select>
                     </div>
-                    <div style="margin-top:.75rem">
+                    <div class="form-row" style="margin-top:.75rem">
                         <textarea name="message" id="message" rows="4"
                             placeholder="Describe the issue / preferred date & time"></textarea>
                     </div>
@@ -188,13 +191,100 @@
 
     </main>
 
-    <a class="whatsapp" href="https://wa.me/919310346037" target="_blank" aria-label="WhatsApp"><svg width="22"
-            height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <?!-- Testimonials Section -->
+
+<section class="testimonials">
+    <div class="container">
+        <h2 class="section-title">Customer Testimonials</h2>
+
+        <div class="slider-container">
+            <!-- arrows OUTSIDE -->
+            <button class="prev">&#10094;</button>
+            <div class="slider-wrapper">
+                <div class="slider">
+                    <div class="review-card">
+                        <div class="profile-initial">RK</div>
+                        <p class="review">“Professional team and excellent service quality. Highly recommend FastFix.”
+                        </p>
+                        <h4>Rajesh Kumar</h4>
+                        <div class="stars">★★★★★</div>
+                    </div>
+
+                    <div class="review-card">
+                        <div class="profile-initial">SV</div>
+                        <p class="review">“Great experience! My washing machine works like new now.”</p>
+                        <h4>Sneha Verma</h4>
+                        <div class="stars">★★★★☆</div>
+                    </div>
+
+                    <div class="review-card">
+                        <div class="profile-initial">AK</div>
+                        <p class="review">“Technicians were knowledgeable and friendly. Worth every penny!”</p>
+                        <h4>Ankit Khanna</h4>
+                        <div class="stars">★★★★★</div>
+                    </div>
+
+                    <div class="review-card">
+                        <div class="profile-initial">MT</div>
+                        <p class="review">“Service quality was top-notch and very professional.”</p>
+                        <h4>Meena Thakur</h4>
+                        <div class="stars">★★★★☆</div>
+                    </div>
+
+                    <div class="review-card">
+                        <div class="profile-initial">PS</div>
+                        <p class="review">“FastFix NCR repaired my AC within an hour. Quick response and polite
+                            technicians!”</p>
+                        <h4>Priya Sharma</h4>
+                        <div class="stars">★★★★★</div>
+                    </div>
+                </div>
+            </div>
+            <button class="next">&#10095;</button>
+        </div>
+
+        <div class="slider-dots"></div>
+    </div>
+</section>
+
+
+
+
+    <?!-- Write Review -->
+
+<section class="review-form">
+    <div class="container">
+        <h3>Share Your Experience</h3>
+        <form action="submit_review.php" method="POST" class="review-submit-box">
+            <input type="text" name="name" placeholder="Your Name" required>
+
+            <div class="rating-box">
+                <label>Rate Us:</label>
+                <div class="stars">
+                    <input type="radio" name="rating" id="star5" value="5" required><label for="star5">★</label>
+                    <input type="radio" name="rating" id="star4" value="4"><label for="star4">★</label>
+                    <input type="radio" name="rating" id="star3" value="3"><label for="star3">★</label>
+                    <input type="radio" name="rating" id="star2" value="2"><label for="star2">★</label>
+                    <input type="radio" name="rating" id="star1" value="1"><label for="star1">★</label>
+                </div>
+            </div>
+
+            <textarea name="message" rows="4" placeholder="Write your feedback..." required></textarea>
+            <button type="submit">Submit Review</button>
+            <p class="note">Your review will appear once approved.</p>
+        </form>
+    </div>
+</section>
+
+
+
+    <a class="whatsapp" href="https://wa.me/919310346037" target="_blank" aria-label="WhatsApp"><svg width="22" height="22"
+            viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path
                 d="M20.52 3.48A11.9 11.9 0 0012 .5 11.9 11.9 0 003.48 3.48 11.9 11.9 0 00.5 12c0 2.1.55 4.1 1.6 5.88L.5 23.5l5.83-1.48A11.9 11.9 0 0012 23.5c3.18 0 6.15-1.24 8.4-3.48A11.9 11.9 0 0023.5 12a11.9 11.9 0 00-1-4.52z"
                 fill="#fff" />
         </svg></a>
-
+    
     <a class="callnow" href="tel:+919310346037">Call Now • 9310346037</a>
 
     <footer>

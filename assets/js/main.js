@@ -33,3 +33,56 @@ document.querySelectorAll('a[href^="#"]').forEach((a) => {
     if (target) target.scrollIntoView({ behavior: "smooth", block: "start" });
   });
 });
+
+// === Testimonials Slider with 3D Animation ===
+const slider = document.querySelector(".slider");
+const slides = document.querySelectorAll(".review-card");
+const prev = document.querySelector(".prev");
+const next = document.querySelector(".next");
+const dotsContainer = document.querySelector(".slider-dots");
+
+let index = 0;
+const visibleCards = 3;
+const total = slides.length;
+
+// Create dots
+for (let i = 0; i < Math.ceil(total / visibleCards); i++) {
+  const dot = document.createElement("span");
+  dot.classList.add("dot");
+  if (i === 0) dot.classList.add("active");
+  dotsContainer.appendChild(dot);
+}
+
+const dots = document.querySelectorAll(".dot");
+
+function updateSlider() {
+  const cardWidth = slides[0].offsetWidth + 25;
+  slider.style.transform = `translateX(-${index * cardWidth}px)`;
+
+  dots.forEach((dot) => dot.classList.remove("active"));
+  const activeDot = Math.floor(index / visibleCards);
+  if (dots[activeDot]) dots[activeDot].classList.add("active");
+}
+
+next.addEventListener("click", () => {
+  index = (index + 1) % total;
+  updateSlider();
+});
+
+prev.addEventListener("click", () => {
+  index = (index - 1 + total) % total;
+  updateSlider();
+});
+
+dots.forEach((dot, i) => {
+  dot.addEventListener("click", () => {
+    index = i * visibleCards;
+    updateSlider();
+  });
+});
+
+// Auto scroll one-by-one
+setInterval(() => {
+  index = (index + 1) % total;
+  updateSlider();
+}, 4000);

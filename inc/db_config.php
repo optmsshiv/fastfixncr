@@ -1,10 +1,15 @@
 ﻿<?php
-// Database connection setup
-\System.Management.Automation.Internal.Host.InternalHost = 'localhost';
-\ = 'your_cpanel_db_user';
-\ = 'your_db_password';
-\ = 'your_database_name';
+// Database configuration
+$host = "localhost";
+$username = "your_cpanel_db_user";
+$password = "your_db_password";
+$database = "your_database_name";
 
-\ = new mysqli(\System.Management.Automation.Internal.Host.InternalHost, \, \, \);
-if (\->connect_error) { die('Connection failed: ' . \->connect_error); }
+// Create connection
+$conn = new mysqli($host, $username, $password, $database);
+
+// Check connection
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
 ?>
