@@ -555,3 +555,25 @@ footer {
     display: flex;
     gap: .5rem
 }
+
+html,
+body {
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
+
+@media (max-width: 768px) {
+    .slider {
+        padding: 0 10px;
+    }
+
+    .review-card {
+        font-size: 0.95rem;
+        padding: 15px;
+    }
+
+    .review-form {
+        padding: 30px 15px;
+    }
+}
