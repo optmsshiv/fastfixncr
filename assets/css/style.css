@@ -219,7 +219,7 @@ button[type=submit] {
 }
 
 .section-title {
-    font-size: 2.2rem;
+    font-size: 2.0rem;
     margin-bottom: 30px;
     font-weight: 700;
     color: #0b79d0;
@@ -510,19 +510,35 @@ footer {
 }
 
 /* floating buttons */
-.whatsapp {
+.whatsapp-float {
     position: fixed;
-    right: 16px;
-    bottom: 96px;
-    background: #25D366;
-    color: #fff;
-    padding: .75rem;
+    bottom: 20px;
+    right: 20px;
+    background-color: #25d365e9;
+    color: white;
     border-radius: 50%;
-    box-shadow: 0 8px 24px rgba(37, 211, 102, 0.18);
+    width: 55px;
+    height: 55px;
     display: flex;
-    align-items: center;
     justify-content: center;
-    text-decoration: none
+    align-items: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.whatsapp-float:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+}
+
+@media (max-width: 480px) {
+    .whatsapp-float {
+        width: 50px;
+        height: 50px;
+        bottom: 15px;
+        right: 15px;
+    }
 }
 
 .callnow {
