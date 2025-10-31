@@ -86,3 +86,9 @@ setInterval(() => {
   index = (index + 1) % total;
   updateSlider();
 }, 4000);
+
+// time and date
+document.addEventListener("DOMContentLoaded", () => {
+  const today = new Date().toISOString().split("T")[0];
+  document.getElementById("preferred_date").setAttribute("min", today);
+});

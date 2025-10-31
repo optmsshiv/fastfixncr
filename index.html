@@ -53,7 +53,7 @@
                 <div
                     style="min-width:220px;background:#fff;padding:.8rem;border-radius:10px;box-shadow:0 6px 18px rgba(11,37,64,0.04)">
                     <strong>Service Area</strong>
-                    <div style="color:var(--muted);font-size:.95rem">Delhi NCR, NOIDA</div>
+                    <div style="color:var(--muted);font-size:.95rem">Delhi NCR</div>
                 </div>
                 <div
                     style="min-width:220px;background:#fff;padding:.8rem;border-radius:10px;box-shadow:0 6px 18px rgba(11,37,64,0.04)">
@@ -180,6 +180,11 @@
                             <option value="Microwave">Microwave</option>
                         </select>
                     </div>
+                    <!-- Date and Time row -->
+                    <div style="margin-top:.75rem" class="form-row">
+                        <input type="date" name="preferred_date" id="preferred_date" required />
+                        <input type="time" name="preferred_time" id="preferred_time" required />
+                    </div>
                     <div class="form-row" style="margin-top:.75rem">
                         <textarea name="message" id="message" rows="4"
                             placeholder="Describe the issue / preferred date & time"></textarea>
@@ -190,20 +195,15 @@
                                 href="tel:+919310346037">9310346037</a></div>
                     </div>
                 </form>
-
-                <div style="padding:0 0.5rem">
-                    <div
-                        style="background:#fff;padding:1rem;border-radius:10px;box-shadow:0 6px 18px rgba(11,37,64,0.04);margin-bottom:1rem">
-                        <strong>Our Location</strong>
-                        <div style="color:var(--muted);font-size:.95rem">Lal Kuan MB Road, New Delhi — 110044</div>
-                    </div>
-
-                    <!-- Replace the src with a proper Google Maps embed URL for your exact location -->
-                    <div style="border-radius:10px;overflow:hidden;box-shadow:0 6px 18px rgba(11,37,64,0.04)">
-                        <iframe width="100%" height="260" frameborder="0" style="border:0"
-                            src="https://www.google.com/maps?q=Lal+Kuan+MB+Road+New+Delhi+110044&output=embed"
-                            allowfullscreen></iframe>
-                    </div>
+                <!-- Contact Info Card -->
+                <div class="contact-info">
+                    <h3>Contact Details</h3>
+                    <p><i class="fas fa-phone"></i> +91 98765 43210</p>
+                    <p><i class="fas fa-envelope"></i> support@fastfixncr.com</p>
+                    <p><i class="fas fa-map-marker-alt"></i> Delhi NCR, India</p>
+                    <hr style="margin:1rem 0;opacity:0.2;">
+                    <h4>Working Hours</h4>
+                    <p>Mon – Sat: 9:00 AM – 8:00 PM<br>Sunday: 10:00 AM – 5:00 PM</p>
                 </div>
             </div>
         </section>
