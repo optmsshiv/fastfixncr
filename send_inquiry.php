@@ -5,7 +5,7 @@ ini_set('display_errors', 1);
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
-require __DIR__ . '/vendor/autoload.php';
+// require __DIR__ . '/vendor/autoload.php';
 require_once __DIR__ . '/inc/db_config.php';
 require_once __DIR__ . '/inc/PHPMailer/src/Exception.php';
 require_once __DIR__ . '/inc/PHPMailer/src/PHPMailer.php';
