@@ -1,7 +1,7 @@
 <?php
 // Replace with your Google Places API Key and Place ID
 $apiKey = "AIzaSyD-pomkT71Z165d7a7m4hR5xA0jlOW2cJA";
-$placeId = "ChIJLbZ-NFv9DDkRQJY4FbcFcgM";
+$placeId = "ChIJCZp1x_U37jkR0Pozh1A8fAA";
 
 $url = "https://maps.googleapis.com/maps/api/place/details/json?placeid=$placeId&fields=reviews,rating,user_ratings_total&key=$apiKey";
 

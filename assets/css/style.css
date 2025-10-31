@@ -365,6 +365,9 @@
      display: flex;
      gap: 25px;
      transition: transform 0.6s ease;
+    overflow-x: auto;
+        scroll-behavior: smooth;
+        padding: 1rem 0;
  }
 
  .review-card {
@@ -375,6 +378,25 @@
      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
      text-align: center;
      min-height: 160px;
+ }
+ .review-header {
+     display: flex;
+     align-items: center;
+     gap: .6rem;
+     margin-bottom: .5rem;
+ }
+
+ .user-icon {
+     background: var(--blue);
+     color: #fff;
+     width: 40px;
+     height: 40px;
+     border-radius: 50%;
+     display: flex;
+     align-items: center;
+     justify-content: center;
+     font-weight: 700;
+     font-size: 1rem;
  }
 
  .profile-initial {
