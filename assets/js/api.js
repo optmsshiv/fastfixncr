@@ -10,8 +10,9 @@ document.getElementById('inquiryForm').addEventListener('submit', async function
   msg.style.color = '#333';
 
   // Basic validation
-  const name = document.getElementById('name').value.trim();
-  const phone = document.getElementById('phone').value.trim();
+  const formData = new FormData(this);
+  const name = formData.get("name")?.trim();
+  const phone = formData.get("phone")?.trim();
   if (!name || !phone) {
     msg.textContent = 'Please enter your name and phone number.';
     msg.style.color = 'red';
@@ -21,10 +22,10 @@ document.getElementById('inquiryForm').addEventListener('submit', async function
   }
 
   // Prepare form data
-  const formData = new FormData(this);
+ // const formData = new FormData(this);
 
   try {
-    const res = await fetch(this.action, {
+    const res = await fetch('send_inquiry.php', {
       method: 'POST',
       body: formData
     });
