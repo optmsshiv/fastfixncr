@@ -49,7 +49,7 @@
  }
 
  .logo img {
-     height: 64px;
+     height: 35px;
      transform: scale(2.1);
      transform-origin: center;
  }
@@ -256,7 +256,12 @@
      padding: .7rem 1rem;
      border-radius: 8px;
      border: 0;
+     cursor: pointer;
+     transition: background 0.2s ease;
      font-weight: 700
+ }
+ button[type="submit"]:hover {
+     background: #005b9a;
  }
 
  /* Mobile View Fix (≤900px) */
@@ -304,12 +309,16 @@
      }
  }
 
+ form.box {
+     flex: 1 1 60%;
+ }
+
  .contact-info {
-     background: #fff;
-     border-radius: 12px;
-     box-shadow: 0 8px 20px rgba(11, 37, 64, 0.08);
-     padding: 1.5rem;
-     color: #0b2540;
+     flex: 1 1 35%;
+     background: #f9f9f9;
+     padding: 1rem 1.5rem;
+     border-radius: 8px;
+     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
  }
 
  .contact-info i {
@@ -317,7 +326,7 @@
      margin-right: 8px;
  }
 
- 
+
  /* === Testimonials Section (Light Theme) === */
  .testimonials {
      background: #0b79d014;

@@ -92,3 +92,9 @@ document.addEventListener("DOMContentLoaded", () => {
   const today = new Date().toISOString().split("T")[0];
   document.getElementById("preferred_date").setAttribute("min", today);
 });
+
+// button loading state
+const form = document.getElementById("inquiryForm");
+form.addEventListener("submit", () => {
+  document.getElementById("submitBtn").textContent = "Sending...";
+});

@@ -84,7 +84,7 @@
             <img src="assets/images/logo.png" alt="FastFix logo" />
             <div>
                 <div style="font-weight:700">FastFix</div>
-                <div style="font-size:.85rem;color:var(--muted)">AC & Kitchen Service — Lal Kuan, New Delhi</div>
+                <div style="font-size:.85rem;color:var(--muted)">AC & Kitchen Service — Delhi NCR</div>
             </div>
         </div>
         <nav class="nav">
@@ -114,7 +114,7 @@
                 <div
                     style="min-width:220px;background:#fff;padding:.8rem;border-radius:10px;box-shadow:0 6px 18px rgba(11,37,64,0.04)">
                     <strong>Working Hours</strong>
-                    <div style="color:var(--muted);font-size:.95rem">Mon–Sun: 9:00am – 8:00pm</div>
+                    <div style="color:var(--muted);font-size:.95rem">Mon–Sun: 9:00am – 5:00pm</div>
                 </div>
             </div>
         </div>
@@ -153,7 +153,8 @@
                     <img src="assets/images/chimney.png"
                         alt="A technician performing maintenance on a chimney in a residential setting, ensuring proper functionality and safety." />
                     <h4>Chimney Repair & Cleaning</h4>
-                    <p style="color:var(--muted);font-size:.95rem">Deep cleaning & more, motor repair, filter replacement &
+                    <p style="color:var(--muted);font-size:.95rem">Deep cleaning & more, motor repair, filter
+                        replacement &
                         installation.</p>
                     <div style="margin-top:.5rem"><a class="btn-primary" href="#contact">Book Now</a></div>
                 </article>
@@ -171,6 +172,17 @@
                     <h4>Microwave Repair</h4>
                     <p style="color:var(--muted);font-size:.95rem">Heating issues, door & magnetron replacement, safety
                         checks.</p>
+                    <div style="margin-top:.5rem"><a class="btn-primary" href="#contact">Book Now</a></div>
+                </article>
+
+                <article class="card">
+                    <img src="assets/images/hob.png" alt="Hob service" />
+                    <h4>Hob Service</h4>
+                    <p style="color:var(--muted);font-size:.95rem">
+                        Gas hob & cooktop service — burner and ignition repair, glass-top & knob replacement, gas-leak
+                        safety checks,
+                        Spares available for all major brands.
+                    </p>
                     <div style="margin-top:.5rem"><a class="btn-primary" href="#contact">Book Now</a></div>
                 </article>
             </div>
@@ -224,10 +236,10 @@
                 <form class="box" id="inquiryForm" action="send_inquiry.php" method="post">
                     <div class="form-row">
                         <input type="text" name="name" id="name" placeholder="Your name" required />
-                        <input type="tel" name="phone" id="phone" placeholder="Phone (required)" pattern="[0-9+\- ]{7,20}"
-                            required />
+                        <input type="tel" name="phone" id="phone" placeholder="Phone (required)"
+                            pattern="[0-9+\- ]{7,20}" required />
                     </div>
-        
+
                     <div style="margin-top:.75rem" class="form-row">
                         <input type="text" name="address" id="address" placeholder="Address / Locality" />
                         <select name="service" id="service">
@@ -237,28 +249,28 @@
                             <option value="Microwave">Microwave</option>
                         </select>
                     </div>
-        
+
                     <div style="margin-top:.75rem" class="form-row">
                         <input type="date" name="preferred_date" id="preferred_date" required />
                         <input type="time" name="preferred_time" id="preferred_time" required />
                     </div>
-        
+
                     <div class="form-row" style="margin-top:.75rem">
                         <textarea name="message" id="message" rows="4"
                             placeholder="Describe the issue / preferred date & time"></textarea>
                     </div>
-        
+
                     <div style="margin-top:.75rem;display:flex;gap:.5rem;align-items:center">
                         <button type="submit" id="submitBtn">Send Inquiry</button>
                         <div style="color:var(--muted);font-size:.9rem">
                             Or call <a href="tel:+919310346037">9310346037</a>
                         </div>
                     </div>
-        
+
                     <!-- Message output -->
                     <div id="formMessage" style="margin-top:1rem;font-size:.95rem;"></div>
                 </form>
-        
+
                 <!-- Contact Info Card -->
                 <div class="contact-info">
                     <h3>Contact Details</h3>
@@ -273,9 +285,11 @@
         </section>
 
 
+
+
     </main>
 
-    <?!-- Testimonials Section -->
+    <!-- Testimonials Section -->
 
 <section class="testimonials">
     <div class="container">
@@ -379,6 +393,7 @@
     
          <!-- JavaScript Files -->
     <script src="/assets/js/main.js"></script>
+    <script src="/assets/js/api.js"></script>
 </body>
 
 </html>

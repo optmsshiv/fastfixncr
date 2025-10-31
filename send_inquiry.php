@@ -12,7 +12,9 @@ $time     = trim($_POST['preferred_time'] ?? '');
 $message  = trim($_POST['message'] ?? '');
 
 if (empty($name) || empty($phone)) {
-    die("Error: Name and phone are required.");
+    http_response_code(400);
+    echo "Name and phone are required.";
+    exit;
 }
 
 // Prepare and insert data
@@ -20,8 +22,8 @@ $stmt = $conn->prepare("INSERT INTO inquiries (name, phone, address, date, time,
 $stmt->bind_param("sssssss", $name, $phone, $address, $date, $time, $service, $message);
 
 if ($stmt->execute()) {
-    // Send Email
-    $to = "sr21er@gmail.com"; // <-- replace with your actual email
+    // --- Admin Email ---
+    $adminEmail = "sr21er@gmail.com"; // <-- your email
     $subject = "New Service Inquiry - FastFix";
     $body = "
 New inquiry received:\n\n
@@ -33,24 +35,34 @@ Preferred Date: $date\n
 Preferred Time: $time\n
 Message: $message\n\n
 Submitted on " . date('Y-m-d H:i:s');
-    
+
     $headers = "From: FastFix Website <no-reply@yourdomain.com>\r\n";
-    $headers .= "Reply-To: $name <$phone>\r\n";
+    $headers .= "Reply-To: no-reply@fastfixncr.in\r\n";
 
-    @mail($to, $subject, $body, $headers);
+    @mail($adminEmail, $subject, $body, $headers);
 
-    echo "<!doctype html><html><head><meta charset='utf-8'><meta name='viewport' content='width=device-width, initial-scale=1'><title>Thank You</title>
-    <style>
-        body{font-family:sans-serif;text-align:center;padding:40px;color:#333;}
-        a{color:#0b79d0;font-weight:bold;text-decoration:none;}
-    </style>
-    </head><body>
-    <h2>Thank you, $name!</h2>
-    <p>Your inquiry has been submitted successfully.</p>
-    <p>We'll contact you shortly at <strong>$phone</strong>.</p>
-    <p><a href='index.html'>&larr; Back to Home</a></p>
-    </body></html>";
+    // --- Auto-reply to User ---
+    // Optional: if you collect email, replace with user's email; for now, we'll send SMS-style acknowledgment via phone only if you use email field later
+    // But since we don't have user's email, we skip direct mail reply unless added later.
+    // If you later add an email field, uncomment the below lines:
+
+    /*
+    if (!empty($_POST['email']) && filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) {
+        $userEmail = $_POST['email'];
+        $userSubject = "FastFix - Service Inquiry Confirmation";
+        $userBody = "Dear $name,\n\nThank you for contacting FastFix!\n\nHere are your booking details:\n
+Service: $service\nPreferred Date: $date\nPreferred Time: $time\nAddress: $address\n\n
+Our team will reach out to you shortly at $phone.\n\nRegards,\nFastFix Support\nsupport@fastfixncr.com";
+        $userHeaders = "From: FastFix <no-reply@yourdomain.com>\r\n";
+        @mail($userEmail, $userSubject, $userBody, $userHeaders);
+    }
+    */
+
+    // For now, return success (JS will handle UI message)
+    echo "success";
+
 } else {
+    http_response_code(500);
     echo "Database error: " . $stmt->error;
 }
 
