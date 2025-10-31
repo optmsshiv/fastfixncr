@@ -221,13 +221,13 @@
         <section id="contact" style="margin-bottom:1rem">
             <h2>Book a Service / Contact Us</h2>
             <div class="contact">
-                <form class="box" id="inquiryForm" action="send_inquiry.php" method="post"
-                    onsubmit="return validateForm()">
+                <form class="box" id="inquiryForm" action="send_inquiry.php" method="post">
                     <div class="form-row">
                         <input type="text" name="name" id="name" placeholder="Your name" required />
-                        <input type="tel" name="phone" id="phone" placeholder="Phone (required)"
-                            pattern="[0-9+\- ]{7,20}" required />
+                        <input type="tel" name="phone" id="phone" placeholder="Phone (required)" pattern="[0-9+\- ]{7,20}"
+                            required />
                     </div>
+        
                     <div style="margin-top:.75rem" class="form-row">
                         <input type="text" name="address" id="address" placeholder="Address / Locality" />
                         <select name="service" id="service">
@@ -237,26 +237,33 @@
                             <option value="Microwave">Microwave</option>
                         </select>
                     </div>
-                    <!-- Date and Time row -->
+        
                     <div style="margin-top:.75rem" class="form-row">
                         <input type="date" name="preferred_date" id="preferred_date" required />
                         <input type="time" name="preferred_time" id="preferred_time" required />
                     </div>
+        
                     <div class="form-row" style="margin-top:.75rem">
                         <textarea name="message" id="message" rows="4"
                             placeholder="Describe the issue / preferred date & time"></textarea>
                     </div>
+        
                     <div style="margin-top:.75rem;display:flex;gap:.5rem;align-items:center">
-                        <button type="submit">Send Inquiry</button>
-                        <div style="color:var(--muted);font-size:.9rem">Or call <a
-                                href="tel:+919310346037">9310346037</a></div>
+                        <button type="submit" id="submitBtn">Send Inquiry</button>
+                        <div style="color:var(--muted);font-size:.9rem">
+                            Or call <a href="tel:+919310346037">9310346037</a>
+                        </div>
                     </div>
+        
+                    <!-- Message output -->
+                    <div id="formMessage" style="margin-top:1rem;font-size:.95rem;"></div>
                 </form>
+        
                 <!-- Contact Info Card -->
                 <div class="contact-info">
                     <h3>Contact Details</h3>
-                    <p><i class="fas fa-phone"></i> +91 98765 43210</p>
-                    <p><i class="fas fa-envelope"></i> support@fastfixncr.com</p>
+                    <p><i class="fas fa-phone"></i> +91 93103 46037</p>
+                    <p><i class="fas fa-envelope"></i> fastfixacandkitchenservice@gmail.com</p>
                     <p><i class="fas fa-map-marker-alt"></i> Delhi NCR, India</p>
                     <hr style="margin:1rem 0;opacity:0.2;">
                     <h4>Working Hours</h4>
@@ -264,6 +271,7 @@
                 </div>
             </div>
         </section>
+
 
     </main>
 
