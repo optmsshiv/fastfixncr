@@ -2,13 +2,13 @@
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
-// Include DB config and PHPMailer
+require __DIR__ . '/vendor/autoload.php';
 require_once __DIR__ . '/inc/db_config.php';
 require_once __DIR__ . '/inc/PHPMailer/src/Exception.php';
 require_once __DIR__ . '/inc/PHPMailer/src/PHPMailer.php';
 require_once __DIR__ . '/inc/PHPMailer/src/SMTP.php';
 
-// Validate input
+// Form data
 $name     = trim($_POST['name'] ?? '');
 $phone    = trim($_POST['phone'] ?? '');
 $email    = trim($_POST['email'] ?? '');
@@ -20,98 +20,105 @@ $message  = trim($_POST['message'] ?? '');
 
 if (empty($name) || empty($phone)) {
     http_response_code(400);
-    echo "Name and phone are required.";
-    exit;
+    exit('Name and phone are required.');
 }
 
-// Prepare and insert data
-$stmt = $conn->prepare("INSERT INTO inquiries (name, phone, email, address, date, time, service, message) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
+// Save to database
+$stmt = $conn->prepare("INSERT INTO inquiries (name, phone, email, address, date, time, service, message)
+                        VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
 $stmt->bind_param("ssssssss", $name, $phone, $email, $address, $date, $time, $service, $message);
+$stmt->execute();
+$stmt->close();
 
-if ($stmt->execute()) {
+// === PHPMailer setup ===
+$mail = new PHPMailer(true);
 
-        // ✅ Configure PHPMailer
-    $mail = new PHPMailer(true);
-    try {
-        // SMTP settings
-        $mail->isSMTP();
-        $mail->Host       = 'smtp.gmail.com';
-        $mail->SMTPAuth   = true;
-        $mail->Username   = 'fastfixacandkitchenservice@gmail.com'; // <-- your Gmail address
-        $mail->Password   = 'afus aers yppx jizf';   // <-- your 16-char app password
-        $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
-        $mail->Port       = 587;
+try {
+    // Gmail SMTP config
+    $mail->isSMTP();
+    $mail->Host       = 'smtp.gmail.com';
+    $mail->SMTPAuth   = true;
+    $mail->Username   = 'fastfixacandkitchenservice@gmail.com'; // your Gmail
+    $mail->Password   = 'afus aers yppx jizf'; // use Gmail App Password (not normal password)
+    $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
+    $mail->Port       = 587;
 
-        // From
-        $mail->setFrom('fastfixacandkitchenservice@gmail.com', 'FastFix NCR');
+    // Common email settings
+    $mail->isHTML(true);
+    $mail->setFrom('no-reply@fastfixncr.in', 'FastFixNCR');
+    $mail->addReplyTo('no-reply@fastfixncr.in', 'FastFixNCR');
 
-    // Admin notification
-        $mail->addAddress('fastfixacandkitchenservice@gmail.com', 'FastFix Admin');
-        $mail->Subject = "New Service Inquiry - FastFix";
-        $mail->Body    = "
-        New inquiry received:\n\n
-        Name: $name\n
-        Phone: $phone\n
-        Email: $email\n
-        Address: $address\n
-        Service: $service\n
-        Preferred Date: $date\n
-        Preferred Time: $time\n
-        Message: $message\n\n
+    // === Admin email ===
+    $mail->addAddress('fastfixacandkitchenservice@gmail.com', 'FastFix Admin');
+    $mail->Subject = "New Service Inquiry - FastFixNCR";
+    $mail->Body = "
+        <div style='font-family:Arial, sans-serif;color:#333;background:#f9f9f9;padding:20px;'>
+            <div style='max-width:600px;margin:auto;background:white;padding:20px;border-radius:10px;'>
+                <div style='text-align:center;'>
+                    <img src='https://fastfixncr.in/assets/images/logo.png' alt='FastFixNCR' width='150'>
+                    <h2 style='color:#0b79d0;margin-top:10px;'>New Service Inquiry</h2>
+                </div>
+                <hr style='border:none;border-top:2px solid #0b79d0;margin:15px 0;'>
+                <p><strong>Name:</strong> $name</p>
+                <p><strong>Phone:</strong> $phone</p>
+                <p><strong>Email:</strong> $email</p>
+                <p><strong>Address:</strong> $address</p>
+                <p><strong>Service:</strong> $service</p>
+                <p><strong>Preferred Date:</strong> $date</p>
+                <p><strong>Preferred Time:</strong> $time</p>
+                <p><strong>Message:</strong> $message</p>
+                <hr style='border:none;border-top:1px solid #ddd;margin:15px 0;'>
+                <p style='font-size:12px;color:#777;'>Submitted on " . date('Y-m-d H:i:s') . "</p>
+            </div>
+        </div>";
 
-        Submitted on " . date('Y-m-d H:i:s');
-        $mail->send();
+    $mail->send();
 
-    // --- Auto-reply to User ---
-        $mail->send();
+    // === Send auto-reply to user ===
+    if (!empty($email) && filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        $userMail = new PHPMailer(true);
+        $userMail->isSMTP();
+        $userMail->Host       = 'smtp.gmail.com';
+        $userMail->SMTPAuth   = true;
+        $userMail->Username   = 'fastfixacandkitchenservice@gmail.com';
+        $userMail->Password   = 'afus aers yppx jizf';
+        $userMail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
+        $userMail->Port       = 587;
 
-        // --- Auto-reply to User ---
-        if (!empty($email) && filter_var($email, FILTER_VALIDATE_EMAIL)) {
-            $reply = new PHPMailer(true);
-            $reply->isSMTP();
-            $reply->Host       = 'smtp.gmail.com';
-            $reply->SMTPAuth   = true;
-            $reply->Username   = 'yourgmail@gmail.com';
-            $reply->Password   = 'your_app_password';
-            $reply->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
-            $reply->Port       = 587;
-
-            $reply->setFrom('yourgmail@gmail.com', 'FastFix Support');
-            $reply->addAddress($email, $name);
-            $reply->Subject = "FastFix - Your Service Request Confirmation";
-            $reply->Body = "
-Dear $name,
-
-Thank you for contacting FastFix!
-
-We’ve received your service inquiry. Here are your details:
-
-Service: $service
-Preferred Date: $date
-Preferred Time: $time
-Address: $address
-
-Our team will contact you soon at $phone.
-
-Regards,
-FastFix Support
-support@fastfixncr.com
-";
-
-            $reply->send();
-        }
-
-        echo "success";
-    } catch (Exception $e) {
-        http_response_code(500);
-        echo "Mailer Error: " . $mail->ErrorInfo;
+        $userMail->setFrom('no-reply@fastfixncr.in', 'FastFixNCR');
+        $userMail->addAddress($email, $name);
+        $userMail->isHTML(true);
+        $userMail->Subject = 'FastFixNCR - Service Request Received';
+        $userMail->Body = "
+            <div style='font-family:Arial,sans-serif;color:#333;background:#f9f9f9;padding:20px;'>
+                <div style='max-width:600px;margin:auto;background:white;padding:20px;border-radius:10px;'>
+                    <div style='text-align:center;'>
+                        <img src='https://fastfixncr.in/assets/images/logo.png' alt='FastFixNCR' width='150'>
+                        <h2 style='color:#0b79d0;margin-top:10px;'>Service Request Received</h2>
+                    </div>
+                    <p>Dear $name,</p>
+                    <p>Thank you for choosing <strong>FastFixNCR</strong>! We've received your inquiry and our technician will contact you soon.</p>
+                    <p><strong>Service:</strong> $service<br>
+                    <strong>Preferred Date:</strong> $date<br>
+                    <strong>Preferred Time:</strong> $time</p>
+                    <p>For urgent queries, call us at <a href='tel:+919310346037'>9310346037</a>.</p>
+                    <hr style='border:none;border-top:1px solid #ddd;margin:15px 0;'>
+                    <p style='font-size:12px;color:#777;text-align:center;'>© " . date('Y') . " FastFixNCR. All rights reserved.</p>
+                </div>
+            </div>";
+        $userMail->send();
     }
 
-} else {
-    http_response_code(500);
-    echo "Database error: " . $stmt->error;
-}
+    echo "<!doctype html><html><head><meta charset='utf-8'><meta name='viewport' content='width=device-width, initial-scale=1'>
+    <title>Thank You</title>
+    <style>body{font-family:sans-serif;text-align:center;padding:40px;color:#333;}a{color:#0b79d0;font-weight:bold;text-decoration:none;}</style></head><body>
+    <h2>Thank you, $name!</h2>
+    <p>Your inquiry has been submitted successfully.</p>
+    <p>We'll contact you shortly at <strong>$phone</strong>.</p>
+    <p><a href='index.html'>&larr; Back to Home</a></p></body></html>";
 
-$stmt->close();
-$conn->close();
+} catch (Exception $e) {
+    http_response_code(500);
+    echo "Mailer Error: {$mail->ErrorInfo}";
+}
 ?>
