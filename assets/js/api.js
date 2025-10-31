@@ -13,6 +13,7 @@ document.getElementById('inquiryForm').addEventListener('submit', async function
   const formData = new FormData(this);
   const name = formData.get("name")?.trim();
   const phone = formData.get("phone")?.trim();
+  
   if (!name || !phone) {
     msg.textContent = 'Please enter your name and phone number.';
     msg.style.color = 'red';

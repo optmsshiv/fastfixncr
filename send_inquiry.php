@@ -112,13 +112,7 @@ try {
         $userMail->send();
     }
 
-    echo "<!doctype html><html><head><meta charset='utf-8'><meta name='viewport' content='width=device-width, initial-scale=1'>
-    <title>Thank You</title>
-    <style>body{font-family:sans-serif;text-align:center;padding:40px;color:#333;}a{color:#0b79d0;font-weight:bold;text-decoration:none;}</style></head><body>
-    <h2>Thank you, $name!</h2>
-    <p>Your inquiry has been submitted successfully.</p>
-    <p>We'll contact you shortly at <strong>$phone</strong>.</p>
-    <p><a href='index.html'>&larr; Back to Home</a></p></body></html>";
+    echo "Inquiry saved and emails sent successfully.";
 
 } catch (Exception $e) {
     http_response_code(500);
