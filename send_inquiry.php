@@ -23,7 +23,7 @@ $stmt->bind_param("sssssss", $name, $phone, $address, $date, $time, $service, $m
 
 if ($stmt->execute()) {
     // --- Admin Email ---
-    $adminEmail = "sr21er@gmail.com"; // <-- your email
+    $adminEmail = "info@optms.co.in"; // <-- your email
     $subject = "New Service Inquiry - FastFix";
     $body = "
 New inquiry received:\n\n
