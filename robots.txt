@@ -1,0 +1,15 @@
+# robots.txt for fastfixncr — adjust rules & sitemap URL as needed
+
+User-agent: *
+# block common sensitive areas
+Disallow: /admin/
+Disallow: /login
+Disallow: /wp-admin/
+Disallow: /cgi-bin/
+Disallow: /private/
+Disallow: /tmp/
+# allow everything else
+Allow: /
+
+# sitemap (replace with your actual sitemap URL)
+Sitemap: https://www.fastfixncr.com/sitemap.xml
