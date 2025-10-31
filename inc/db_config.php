@@ -1,9 +1,9 @@
 ﻿<?php
 // Database configuration
 $host = "localhost";
-$username = "your_cpanel_db_user";
-$password = "your_db_password";
-$database = "your_database_name";
+$username = "fastfix";
+$password = "123@Fastfix";
+$database = "edrppymy_fastfix";
 
 // Create connection
 $conn = new mysqli($host, $username, $password, $database);

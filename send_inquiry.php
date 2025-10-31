@@ -7,6 +7,8 @@ $name = trim($_POST['name'] ?? '');
 $phone = trim($_POST['phone'] ?? '');
 $address = trim($_POST['address'] ?? '');
 $service = trim($_POST['service'] ?? '');
+$date = trim($_POST['preferred_date'] ?? '');
+$time = trim($_POST['preferred_time'] ?? '');
 $message = trim($_POST['message'] ?? '');
 
 if (empty($name) || empty($phone)) {
@@ -14,12 +16,12 @@ if (empty($name) || empty($phone)) {
 }
 
 // Prepare and insert data
-$stmt = $conn->prepare("INSERT INTO inquiries (name, phone, address, service, message) VALUES (?, ?, ?, ?, ?)");
-$stmt->bind_param("sssss", $name, $phone, $address, $service, $message);
+$stmt = $conn->prepare("INSERT INTO inquiries (name, phone, address, date, time, service, message) VALUES (?, ?, ?, ?, ?, ?, ?)");
+$stmt->bind_param("sssssss", $name, $phone, $address, $service, $date, $time, $message);
 
 if ($stmt->execute()) {
     // Send Email
-    $to = "youremail@example.com"; // <-- replace with your actual email
+    $to = "sr21er@gmail.com"; // <-- replace with your actual email
     $subject = "New Service Inquiry - FastFix";
     $body = "
         New inquiry received:\n\n
@@ -27,6 +29,8 @@ if ($stmt->execute()) {
         Phone: $phone\n
         Address: $address\n
         Service: $service\n
+        Preferred Date: $date\n
+        Preferred Time: $time\n
         Message: $message\n\n
         Submitted on " . date('Y-m-d H:i:s');
     $headers = "From: FastFix Website <no-reply@yourdomain.com>\r\n";
