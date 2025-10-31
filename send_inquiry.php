@@ -25,7 +25,7 @@ if (empty($name) || empty($phone)) {
 }
 
 // Prepare and insert data
-$stmt = $conn->prepare("INSERT INTO inquiries (name, phone, address, date, time, service, message) VALUES (?, ?, ?, ?, ?, ?, ?)");
+$stmt = $conn->prepare("INSERT INTO inquiries (name, phone, email, address, date, time, service, message) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
 $stmt->bind_param("ssssssss", $name, $phone, $email, $address, $date, $time, $service, $message);
 
 if ($stmt->execute()) {
