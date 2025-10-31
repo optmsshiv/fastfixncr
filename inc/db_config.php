@@ -1,7 +1,7 @@
 ﻿<?php
 // Database configuration
 $host = "localhost";
-$username = "fastfix";
+$username = "edrppymy_fastfix";
 $password = "123@Fastfix";
 $database = "edrppymy_fastfix";
 
