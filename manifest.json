@@ -1,0 +1,26 @@
+{
+  "name": "FastFix AC & Kitchen Service",
+  "short_name": "FastFixNCR",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#0b79d0",
+  "description": "Expert appliance repair in Delhi NCR. Reliable AC, Chimney, and Microwave services.",
+  "icons": [
+    {
+      "src": "/icons/favicon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/icons/favicon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    },
+    {
+      "src": "/icons/favicon-192.png",
+      "sizes": "32x32",
+      "type": "image/png"
+    }
+  ]
+}
