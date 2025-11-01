@@ -75,6 +75,8 @@ try {
             </div>
         </div>";
 
+        $mail->AltBody = "New inquiry received from $name ($phone) for $service.";
+
     $mail->send();
 
     // === Send auto-reply to user ===
@@ -99,8 +101,9 @@ try {
                         <img src='https://fastfixncr.in/assets/images/logo.png' alt='FastFixNCR' width='150'>
                         <h2 style='color:#0b79d0;margin-top:10px;'>Service Request Received</h2>
                     </div>
-                    <p>Dear $name,</p>
-                    <p>Thank you for choosing <strong>FastFixNCR</strong>! We've received your inquiry and our technician will contact you soon.</p>
+                    <p>Dear <strong>$name</strong>,</p>
+                    <p>Thank you for choosing <strong>FastFixNCR</strong>! We've received your inquiry for <strong>$service</strong> and our technician will contact you soon.</p>
+                    <p><strong>Submitted details:</strong><br>
                     <p><strong>Service:</strong> $service<br>
                     <strong>Preferred Date:</strong> $date<br>
                     <strong>Preferred Time:</strong> $time</p>
