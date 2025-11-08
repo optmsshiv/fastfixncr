@@ -33,6 +33,48 @@
      font-weight: 700
  }
 
+ .topbar .right {
+     display: flex;
+     align-items: center;
+     gap: 12px;
+ }
+
+ .whatsapp-top {
+     display: flex;
+     align-items: center;
+     background: #25d366;
+     color: #fff;
+     padding: 4px 10px;
+     border-radius: 20px;
+     font-weight: 600;
+     font-size: 14px;
+     text-decoration: none;
+     transition: background 0.3s ease;
+ }
+
+ .whatsapp-top img {
+     width: 16px;
+     height: 16px;
+     margin-right: 5px;
+ }
+
+ .whatsapp-top:hover {
+     background: #20b357;
+ }
+
+ /* Mobile */
+ @media (max-width: 768px) {
+     .topbar {
+         flex-direction: column;
+         gap: 6px;
+         text-align: center;
+     }
+
+     .topbar .right {
+         flex-direction: column;
+     }
+ }
+
  /* header */
  header {
      display: flex;
@@ -601,29 +643,59 @@
 
  /* footer */
 
- .footer {
-     padding: 1rem;
-     text-align: center;
-     color: var(--muted);
-     background: #0b2540;
-     color: #d7e3f4;
-     padding: 1rem 1rem 1rem;
-     font-size: 0.95rem;
-     position: relative;
- }
+.footer {
+    position: relative;
+    background: #0b2540;
+    color: #d7e3f4;
+    text-align: center;
+    padding: 1.2rem 1rem 1.5rem;
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
 
- /* Gradient top line (keep) */
- .footer::before {
-     content: "";
-     position: absolute;
-     top: 0;
-     left: 0;
-     width: 100%;
-     height: 4px;
-     background: linear-gradient(90deg, #0099ff, #4fa3ff, #00c6ff);
-     box-shadow: 0 0 10px rgba(0, 153, 255, 0.5);
- }
+.footer::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(90deg, #0099ff, #4fa3ff, #00c6ff);
+    box-shadow: 0 0 10px rgba(0, 153, 255, 0.5);
+}
 
+.footer-content {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+}
+
+.footer a {
+    color: #4fa3ff;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.footer a:hover {
+    color: #00c6ff;
+}
+
+.footer .credit {
+    font-size: 0.85rem;
+    opacity: 0.9;
+}
+
+/* Neon Glow Effect */
+.glow {
+    color: #4fa3ff;
+    text-shadow: 0 0 6px #0099ff, 0 0 12px #00c6ff, 0 0 20px rgba(0, 153, 255, 0.6);
+    font-weight: 600;
+}
+
+.glow:hover {
+    color: #00c6ff;
+    text-shadow: 0 0 10px #00c6ff, 0 0 25px #4fa3ff, 0 0 35px rgba(0, 153, 255, 0.8);
+}
 
 
  /* mobile */

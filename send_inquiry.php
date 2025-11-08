@@ -53,7 +53,7 @@ try {
 
     // === Admin email ===
     $mail->addAddress('fastfixacandkitchenservice@gmail.com', 'FastFix Admin');
-    $mail->Subject = "New Service Inquiry - FastFixNCR";
+    $mail->Subject = "New Service Inquiry for - $service";
     $mail->Body = "
         <div style='font-family:Arial, sans-serif;color:#333;background:#f9f9f9;padding:20px;'>
             <div style='max-width:600px;margin:auto;background:white;padding:20px;border-radius:10px;'>

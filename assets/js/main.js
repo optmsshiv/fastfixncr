@@ -98,3 +98,6 @@ const form = document.getElementById("inquiryForm");
 form.addEventListener("submit", () => {
   document.getElementById("submitBtn").textContent = "Sending...";
 });
+
+// year update
+document.getElementById("year").textContent = new Date().getFullYear();
