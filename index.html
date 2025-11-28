@@ -5,58 +5,82 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Site Offline</title>
+
     <style>
         body {
             margin: 0;
-            padding: 0;
-            background: #0d0d0d;
-            font-family: Arial, sans-serif;
+            font-family: "Inter", Arial, sans-serif;
+            background: radial-gradient(circle at top, #0a0a0a, #000);
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
-            color: #fff;
+            color: #e1e1e1;
+        }
+
+        .card {
+            width: 480px;
+            padding: 40px;
+            background: rgba(20, 20, 20, 0.9);
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(8px);
+            box-shadow: 0px 0px 40px rgba(0, 255, 255, 0.08);
             text-align: center;
         }
 
-        .container {
-            max-width: 450px;
-            padding: 30px;
-            background: #1a1a1a;
-            border-radius: 14px;
-            box-shadow: 0 0 20px rgba(255, 255, 255, 0.05);
+        .icon {
+            width: 90px;
+            margin-bottom: 20px;
+            filter: drop-shadow(0px 0px 6px rgba(0, 255, 255, 0.4));
         }
 
         h1 {
-            font-size: 32px;
-            margin-bottom: 15px;
+            font-size: 28px;
+            margin-bottom: 12px;
+            letter-spacing: 1px;
+            font-weight: 600;
+            color: #00e5ff;
+            text-shadow: 0px 0px 10px rgba(0, 255, 255, 0.5);
         }
 
         p {
-            line-height: 1.5;
-            font-size: 16px;
+            font-size: 15px;
             opacity: 0.85;
+            line-height: 1.6;
         }
 
-        .logo {
-            margin-bottom: 20px;
+        .line {
+            height: 1px;
+            width: 60%;
+            background: linear-gradient(90deg, transparent, #0099aa, transparent);
+            margin: 20px auto;
         }
 
-        .logo img {
-            width: 80px;
-            opacity: 0.9;
+        .footer {
+            margin-top: 25px;
+            font-size: 13px;
+            opacity: 0.55;
         }
     </style>
 </head>
 
 <body>
-    <div class="container">
-        <div class="logo">
-            <img src="https://cdn-icons-png.flaticon.com/512/1828/1828843.png" alt="Shutdown Icon">
-        </div>
+    <div class="card">
+        <img class="icon" src="https://cdn-icons-png.flaticon.com/512/1828/1828843.png" alt="Shutdown Icon">
+
         <h1>Website Offline</h1>
-        <p>This website has been shut down and is no longer accessible.<br><br>
-            If you believe this is an error or need assistance, please contact the administrator.</p>
+
+        <div class="line"></div>
+
+        <p>
+            This website has been taken offline as part of an internal update.<br>
+            For inquiries or access requests, please contact the administrator.
+        </p>
+
+        <div class="footer">
+            © 2025 — All Rights Reserved
+        </div>
     </div>
 </body>
 
