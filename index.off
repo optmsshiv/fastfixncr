@@ -1,0 +1,462 @@
+﻿<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- SEO Meta Tags -->
+    <title>FastFix AC & Kitchen Service | AC Service | Microwave Service | Chimney Service | Dishwasher Service | Expert Appliance Repair in Delhi NCR</title>
+    <meta name="description"
+        content="AC, Chimney, Dishwasher & Microwave repair — speedy reliable service in Lal Kuan, New Delhi. Same-day home appliance repair across Delhi NCR. Call 9310346037 for expert service.">
+    <meta name="robots" content="index, follow">
+    <meta name="keywords"
+    content="Appliance Repair Delhi NCR, AC Repair Delhi, Chimney Repair Delhi, Dishwasher Service Delhi, Microwave Repair Delhi, FastFix NCR, Home Appliance Service Delhi">
+    <meta property="og:title" content="FastFix NCR | Reliable Home Appliance Repair in Delhi NCR">
+    <meta property="og:description"
+    content="Book same-day repair for AC, Chimney, Fridge, and more. Trusted technicians near you. Call 9310346037.">
+    <meta property="og:image" content="https://fastfixncr.in/assets/images/preview.png">
+    <meta property="og:url" content="https://fastfixncr.in/">
+    <meta name="twitter:card" content="summary_large_image">
+    
+    <meta name="author" content="FastFix NCR">
+    <meta name="language" content="English">
+    <meta name="distribution" content="Global">
+    <meta name="rating" content="General">
+    <meta name="revisit-after" content="7 days">
+    <meta name="google" content="notranslate">
+    
+    <!-- Google / Search Engine Tags -->
+    <link rel="canonical" href="https://fastfixncr.in/">
+    <link rel="icon" type="image/png" href="/icons/favicon.png">
+    <link rel="manifest" href="/manifest.json">
+    <meta name="theme-color" content="#0b79d0">
+    <meta name="google-site-verification" content="flb1WEadRmBWfELYmBaHcgKqPdoAefpm-QyAD40TDCs">
+    <meta itemprop="url" content="https://fastfixncr.in/">
+    <meta itemprop="name" content="FastFix AC & Kitchen Service | AC Service | Microwave Service | Chimney Service | Dishwasher Service Expert Appliance Repair in Delhi NCR">
+    <meta itemprop="description"
+        content="FastFix NCR provides expert home appliance repair services across Delhi NCR. Same-day service for AC, washing machine, fridge, and more. Book now!">
+    <meta itemprop="image" content="https://fastfixncr.in/assets/images/logo.png">
+
+    <!-- Facebook Meta Tags -->
+    <meta property="og:url" content="https://fastfixncr.in/">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="FastFix AC & Kitchen Service | Expert Appliance Repair in Delhi NCR">
+    <meta property="og:description"
+        content="FastFix NCR provides expert home appliance repair services across Delhi NCR. Same-day service for AC, washing machine, fridge, and more. Book now!">
+    <meta property="og:image" content="https://fastfixncr.in/assets/images/logo.png">
+
+    <!-- Instagram Meta Tags -->
+    <meta property="og:title" content="FastFix AC & Kitchen Service | Expert Appliance Repair in Delhi NCR">
+    <meta property="og:description"
+        content="FastFix NCR provides expert home appliance repair services across Delhi NCR. Same-day service for AC, washing machine, fridge, and more. Book now!">
+    <meta property="og:image" content="https://fastfixncr.in/assets/images/logo.png">
+
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="assets/css/style.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap"
+        as="style" onload="this.rel='stylesheet'">
+    <noscript>
+        <link rel="stylesheet"
+            href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap">
+    </noscript>
+
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/images/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicon-16x16.png">
+    <link rel="manifest" href="assets/images/site.webmanifest">
+    <link rel="mask-icon" href="assets/images/safari-pinned-tab.svg" color="#5bbad5">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="theme-color" content="#ffffff">
+
+    <!-- LocalBusiness Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "LocalBusiness",
+      "name": "FastFix AC & Kitchen Service",
+      "image": "https://fastfixncr.in/assets/images/logo.png",
+      "url": "https://fastfixncr.in/",
+      "telephone": "+919310346037",
+      "priceRange": "₹₹",
+      "description": "FastFix NCR provides expert home appliance repair services across Delhi NCR — specializing in AC, Chimney, Dishwasher, Microwave, and Fridge repair with genuine parts and same-day service.",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Lal Kuan, MB Road",
+        "addressLocality": "New Delhi",
+        "postalCode": "110044",
+        "addressCountry": "IN"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 28.4709458,
+        "longitude": 77.1817374
+      },
+      "openingHoursSpecification": [{
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday",
+          "Saturday",
+          "Sunday"
+        ],
+        "opens": "09:00",
+        "closes": "17:00"
+      }],
+      "sameAs": [
+        "https://www.facebook.com/fastfixncr",
+        "https://www.instagram.com/fastfixncr",
+        "https://www.google.com/maps/place/FastFix+AC+and+Kitchen+Service/"
+      ],
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.8",
+        "reviewCount": "230"
+      },
+      "serviceArea": {
+        "@type": "Place",
+        "name": "Delhi NCR"
+      }
+    }
+    </script>
+
+
+</head>
+
+<body>
+    <div class="topbar">
+        <div>FastFix AC & Kitchen Service</div>
+        <div class="right">
+            <div class="phone">
+                Call: <a href="tel:+919310346037" style="color:#fff;text-decoration:underline;">9310346037</a>
+            </div>
+            <a href="https://wa.me/919310346037" target="_blank" class="whatsapp-top">
+                <img src="assets/images/whatsapp.png" alt="WhatsApp" />
+                <span>Chat</span>
+            </a>
+        </div>
+    </div>
+
+
+    <header class="container">
+        <div class="logo">
+            <img src="assets/images/logo.png" alt="FastFix logo" />
+            <div>
+                <div style="font-weight:700">FastFix</div>
+                <div style="font-size:.85rem;color:var(--muted)">AC & Kitchen Service — Delhi NCR</div>
+            </div>
+        </div>
+        <nav class="nav">
+            <a href="#services">Services</a>
+            <a href="#why">Why Us</a>
+            <a href="#contact" class="btn-primary">Book Service</a>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <div class="container hero-left">
+            <h1>Fast, reliable repair for AC, Chimney, Dishwasher & Microwave</h1>
+            <p class="tag">Experienced technicians · Genuine parts · Walk-in & doorstep repairs · Sale & purchase
+                assistance
+            </p>
+            <div class="hero-ctas">
+                <a class="phone-cta" href="tel:+919310346037">Call 9310346037</a>
+                <a class="btn-primary" href="#contact">Book Online</a>
+            </div>
+
+            <div style="margin-top:1.25rem;display:flex;gap:1rem;align-items:center;flex-wrap:wrap">
+                <div
+                    style="min-width:220px;background:#fff;padding:.8rem;border-radius:10px;box-shadow:0 6px 18px rgba(11,37,64,0.04)">
+                    <strong>Service Area</strong>
+                    <div style="color:var(--muted);font-size:.95rem">Delhi NCR</div>
+                </div>
+                <div
+                    style="min-width:220px;background:#fff;padding:.8rem;border-radius:10px;box-shadow:0 6px 18px rgba(11,37,64,0.04)">
+                    <strong>Working Hours</strong>
+                    <div style="color:var(--muted);font-size:.95rem">Mon–Sun: 9:00am – 5:00pm</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="hero-right container">
+            <div class="brand-badge">
+                <!-- Replace with your logo or flyer image -->
+                <img src="assets/images/flyer.jpg" alt="FastFix Flyer" />
+                <div style="margin-top:.5rem;font-weight:700">Speedy, Reliable Service</div>
+                <div style="color:var(--muted);font-size:.9rem">AC | Chimney | Dishwasher | Microwave</div>
+            </div>
+
+            <div style="display:flex;gap:.5rem;width:100%">
+                <div style="flex:1;background:#fff;padding:.6rem;border-radius:8px;text-align:center">Sale / Purchase
+                    Assistance</div>
+                <div style="flex:1;background:#fff;padding:.6rem;border-radius:8px;text-align:center">Spares Available
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <main class="container">
+        <section id="services">
+            <h2 style="margin-top:1rem">Our Services</h2>
+            <div class="services">
+                <article class="card">
+                    <img src="assets/images/ac.png"
+                        alt="A technician performing maintenance on an air conditioner in a well-lit residential setting, ensuring optimal performance and comfort." />
+                    <h4>Air Conditioner Repair</h4>
+                    <p style="color:var(--muted);font-size:.95rem">Installation, gas top-up, compressor & PCB repairs —
+                        all brands supported.</p>
+                    <div style="margin-top:.5rem"><a class="btn-primary" href="#contact">Book Now</a></div>
+                </article>
+
+                <article class="card">
+                    <img src="assets/images/chimney.png"
+                        alt="A technician performing maintenance on a chimney in a residential setting, ensuring proper functionality and safety." />
+                    <h4>Chimney Repair & Cleaning</h4>
+                    <p style="color:var(--muted);font-size:.95rem">Deep cleaning & more, motor repair, filter
+                        replacement &
+                        installation.</p>
+                    <div style="margin-top:.5rem"><a class="btn-primary" href="#contact">Book Now</a></div>
+                </article>
+
+                <article class="card">
+                    <img src="assets/images/dishwasher.png" alt="Dishwasher service" />
+                    <h4>Dishwasher Service</h4>
+                    <p style="color:var(--muted);font-size:.95rem">Fault diagnostics, pump & controller repair, and
+                        maintenance.</p>
+                    <div style="margin-top:.5rem"><a class="btn-primary" href="#contact">Book Now</a></div>
+                </article>
+
+                <article class="card">
+                    <img src="assets/images/microwave.png" alt="Microwave service" />
+                    <h4>Microwave Repair</h4>
+                    <p style="color:var(--muted);font-size:.95rem">Heating issues, door & magnetron replacement, safety
+                        checks.</p>
+                    <div style="margin-top:.5rem"><a class="btn-primary" href="#contact">Book Now</a></div>
+                </article>
+
+                <article class="card">
+                    <img src="assets/images/hob.png" alt="Hob service" />
+                    <h4>Hob Service</h4>
+                    <p style="color:var(--muted);font-size:.95rem">
+                        Gas hob & cooktop service — burner and ignition repair, glass-top & knob replacement, gas-leak
+                        safety checks,
+                        Spares available for all major brands.
+                    </p>
+                    <div style="margin-top:.5rem"><a class="btn-primary" href="#contact">Book Now</a></div>
+                </article>
+
+                <article class="card">
+                    <img src="assets/images/cooking_range.png" alt="cooking_range service" />
+                    <h4>Cooking Range Service</h4>
+                    <p style="color:var(--muted);font-size:.95rem">
+                        Cooking range & oven repair — heating element replacement, thermostat repair, door seal fixes,
+                        and more.
+                    </p>
+                    <div style="margin-top:.5rem"><a class="btn-primary" href="#contact">Book Now</a></div>
+                </article>
+            </div>
+        </section>
+
+        <section id="why" class="why-section">
+            <div class="container">
+                <h2 class="section-title">Why Choose <span>FastFix</span>?</h2>
+                <p class="section-subtitle">Trusted, transparent, and tech-enabled appliance repair service across NCR
+                </p>
+
+                <div class="why-grid">
+                    <div class="why-card">
+                        <i class="fas fa-tools"></i>
+                        <h3>Expert Technicians</h3>
+                        <p>Certified professionals with real experience in handling all major brands and models.</p>
+                    </div>
+                    <div class="why-card">
+                        <i class="fas fa-clock"></i>
+                        <h3>Quick Response</h3>
+                        <p>Instant booking and fast turnaround—because your time matters as much as your appliance.</p>
+                    </div>
+                    <div class="why-card">
+                        <i class="fas fa-shield-alt"></i>
+                        <h3>Warranty Support</h3>
+                        <p>Every service is backed by a standard warranty, giving you complete peace of mind.</p>
+                    </div>
+                    <div class="why-card">
+                        <i class="fas fa-wallet"></i>
+                        <h3>Affordable Pricing</h3>
+                        <p>Transparent service rates with no hidden charges. Pay only for what’s needed.</p>
+                    </div>
+                    <div class="why-card">
+                        <i class="fas fa-thumbs-up"></i>
+                        <h3>Customer Satisfaction</h3>
+                        <p>Over 10,000+ happy customers across NCR rely on our trusted repair experts.</p>
+                    </div>
+                    <div class="why-card">
+                        <i class="fas fa-headset"></i>
+                        <h3>24×7 Support</h3>
+                        <p>Always available to assist you with booking, troubleshooting, or emergency service.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <section id="contact" style="margin-bottom:1rem">
+            <h2>Book a Service / Contact Us</h2>
+            <div class="contact">
+                <form class="box" id="inquiryForm" action="send_inquiry.php" method="post">
+                    <div class="form-row">
+                        <input type="text" name="name" id="name" placeholder="Your name" required />
+                        <input type="tel" name="phone" id="phone" placeholder="Phone (required)"
+                            pattern="[0-9+\- ]{7,20}" required />
+                    </div>
+
+                    <div style="margin-top:.75rem" class="form-row">
+                        <input type="email" name="email" id="email" placeholder="Your email (optional)" />
+                        <select name="service" id="service">
+                            <option value="AC">Air Conditioner</option>
+                            <option value="Chimney">Chimney</option>
+                            <option value="Dishwasher">Dishwasher</option>
+                            <option value="Microwave">Microwave</option>
+                            <option value="Hob">Hob</option>
+                            <option value="Cooking Range">Cooking Range</option>
+                        </select>
+                    </div>
+
+                    <div style="margin-top:.75rem" class="form-row">
+                        <input type="date" name="preferred_date" id="preferred_date" required />
+                        <input type="time" name="preferred_time" id="preferred_time" required />
+                    </div>
+
+                    <div style="margin-top:.75rem" class="form-row">
+                        <input type="text" name="address" id="address" placeholder="Address / Locality" />
+                    </div>
+
+                    <div class="form-row" style="margin-top:.75rem">
+                        <textarea name="message" id="message" rows="4"
+                            placeholder="Describe the issue / preferred date & time"></textarea>
+                    </div>
+
+                    <div style="margin-top:.75rem;display:flex;gap:.5rem;align-items:center">
+                        <button type="submit" id="submitBtn">Send Inquiry</button>
+                        <div style="color:var(--muted);font-size:.9rem">
+                            Or call <a href="tel:+919310346037">9310346037</a>
+                        </div>
+                    </div>
+
+                    <!-- Message output -->
+                    <div id="formMessage" style="margin-top:1rem;font-size:.95rem;"></div>
+                </form>
+
+                <!-- Contact Info Card -->
+                <div class="contact-info">
+                    <h3>Contact Details</h3>
+                    <p><i class="fas fa-phone"></i> +91 93103 46037</p>
+                    <p><i class="fas fa-envelope"></i> fastfixacandkitchenservice@gmail.com</p>
+                    <p><i class="fas fa-map-marker-alt"></i> Delhi NCR, India</p>
+                    <hr style="margin:1rem 0;opacity:0.2;">
+                    <h4>Working Hours</h4>
+                    <p>Mon – Sat: 9:00 AM – 5:00 PM<br>Sunday: 10:00 AM – 5:00 PM<br>Friday: Close</p>
+                </div>
+            </div>
+        </section>
+
+
+
+
+    </main>
+
+    <!-- Testimonials Section -->
+
+<section class="testimonials" id="testimonials">
+    <div class="container">
+        <h2 class="section-title">What Our Customers Say</h2>
+
+        <div class="slider-container" id="reviews-slider">
+            <!-- arrows OUTSIDE -->
+            <button class="prev">&#10094;</button>
+            <div class="slider-wrapper">
+                <div class="slider">
+                    <div class="review-card">
+                        <div class="profile-initial">RK</div>
+                        <p class="review">“Professional team and excellent service quality. Highly recommend FastFix.”
+                        </p>
+                        <h4>Rajesh Kumar</h4>
+                        <div class="stars">★★★★★</div>
+                    </div>
+
+                    
+                </div>
+            </div>
+            <button class="next">&#10095;</button>
+        </div>
+
+        <div class="slider-dots"></div>
+    </div>
+</section>
+
+
+
+
+    <?!-- Write Review -->
+
+<section class="review-form">
+    <div class="container">
+        <h3>Share Your Experience</h3>
+        <form action="submit_review.php" method="POST" class="review-submit-box">
+            <input type="text" name="name" placeholder="Your Name" required>
+
+            <div class="rating-box">
+                <label>Rate Us:</label>
+                <div class="stars">
+                    <input type="radio" name="rating" id="star5" value="5" required><label for="star5">★</label>
+                    <input type="radio" name="rating" id="star4" value="4"><label for="star4">★</label>
+                    <input type="radio" name="rating" id="star3" value="3"><label for="star3">★</label>
+                    <input type="radio" name="rating" id="star2" value="2"><label for="star2">★</label>
+                    <input type="radio" name="rating" id="star1" value="1"><label for="star1">★</label>
+                </div>
+            </div>
+
+            <textarea name="message" rows="4" placeholder="Write your feedback..." required></textarea>
+            <button type="submit">Submit Review</button>
+            <p class="note">Your review will appear once approved.</p>
+        </form>
+    </div>
+</section>
+
+
+    <!-- Floating Call Button -->
+    <a href="tel:+919310346037" class="float-btn call-float" aria-label="Call Now">
+        <i class="fa-solid fa-phone"></i>
+    </a>
+    
+    <!-- Floating WhatsApp Button -->
+    <a href="https://wa.me/919310346037" class="float-btn whatsapp-float" target="_blank" aria-label="Chat on WhatsApp">
+        <i class="fa-brands fa-whatsapp"></i>
+    </a>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div>All Rights Reserved. &copy; <span id="year"></span> FastFix — AC & Kitchen Service · Delhi - NCR ·
+                <a href="tel:+919310346037">9310346037</a>
+            </div>
+            <div class="credit">
+                Design & Developed by <a href="https://optms.co.in" target="_blank" class="glow">OPTMS TECH</a>
+            </div>
+        </div>
+    </footer>
+
+    
+         <!-- JavaScript Files -->
+    <script src="/assets/js/main.js"></script>
+    <script src="/assets/js/api.js"></script>
+    <script src="/assets/js/google_review.js"></script>
+</body>
+
+</html>
